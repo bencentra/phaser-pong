@@ -1,0 +1,18 @@
+{
+  "name": "phaser-template",
+  "version": "1.0.0",
+  "description": "Template for creating games with Phaser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "http-server ."
+  },
+  "author": "Ben Centra <blcentra@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "phaser-ce": "^2.7.10"
+  },
+  "devDependencies": {
+    "http-server": "^0.10.0"
+  }
+}
