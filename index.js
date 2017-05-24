@@ -45,6 +45,8 @@
   	// Initial ball velocity
   	ball.body.velocity.x = BALL_Vx;
   	ball.body.velocity.y = BALL_Vy;
+    ball.body.collideWorldBounds = true;
+    ball.body.bounce.set(1);
   }
 
   /*
@@ -57,10 +59,10 @@
 
   	// Ball collision
   	if (game.physics.arcade.collide(ball, paddleL)) {
-  		 handleCollision(ball, 'left');
+  		 handleCollision(ball, paddleL);
   	}
   	if (game.physics.arcade.collide(ball, paddleR)) {
-  		handleCollision(ball, 'right');
+  		handleCollision(ball, paddleR);
   	}
   }
 
@@ -81,8 +83,18 @@
   	}
   }
 
-  function handleCollision(ball, direction) {
-  	console.log('collision', direction);
+  function handleCollision(ball, paddle) {
+    // Bounce and speed up the ball
+    var tmpX = ball.body.velocity.x;
+    ball.body.velocity.x = tmpX > 0 ? tmpX + 20 : tmpX - 20;
+    // Add some "spin"
+    if (paddle.body.velocity.y > 0) {
+      ball.body.velocity.y += 20;
+    } else if (paddle.body.velocity.y < 0) {
+      ball.body.velocity.y -= 20;
+    } else {
+
+    }
   }
 
 })(Phaser);
